@@ -24,7 +24,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    private WebSocketClient webSocketClient;
+
     private RecyclerView chatsRV;
     private EditText userMsgEdt;
     private FloatingActionButton sendMsgFAB;
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         chatsRV=findViewById(R.id.idRVChats);
         userMsgEdt=findViewById(R.id.idEdtMessage);
         sendMsgFAB=findViewById(R.id.idFABSend);
-        webSocketClient = new WebSocketClient();
+
         chatsModalArrayList=new ArrayList<>();
         chatRVAdapter=new ChatRVAdapter(chatsModalArrayList,this);
         LinearLayoutManager manager =new LinearLayoutManager(this);
@@ -57,45 +57,42 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                String message = userMsgEdt.getText().toString();
-                webSocketClient.sendMessage(message);
-//                addResponse(userMsgEdt.getText().toString());
+                addResponse(userMsgEdt.getText().toString());
                 userMsgEdt.setText("");
 
             }
         });
     }
-//    private void addResponse(String response){
-//        chatsModalArrayList.add(new ChatsModal(response,USER_KEY));
-//        chatRVAdapter.notifyDataSetChanged();
-//
-//        String url="";
-//        String BASE_URL="";
-//
-////        Retrofit retrofit =new Retrofit.Builder()
-////                .baseUrl(BASE_URL)
-////                .addCallAdapterFactory(GsonConverterFactory.create())
-////                .build();
-//
-////        RetrofitAPI retrofitAPI=retrofit.create(RetrofitAPI.class);
-////        Call<MessageModal> call=retrofitAPI.getMessage(url);
-//        call.enqueue(new Callback<MessageModal>() {
-//            @Override
-//            public void onResponse(Call<MessageModal> call, Response<MessageModal> response) {
-//                if(response.isSuccessful()){
-//                    MessageModal modal=response.body();
-//                    chatsModalArrayList.add(new ChatsModal(modal.getResponse(),BOT_KEY));
-//                    chatRVAdapter.notifyDataSetChanged();
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<MessageModal> call, Throwable t) {
-//                chatsModalArrayList.add(new ChatsModal("Please revert your question",BOT_KEY));
-//                chatRVAdapter.notifyDataSetChanged();
-//            }
-//        });
-//    }
+    private void addResponse(String response){
+        chatsModalArrayList.add(new ChatsModal(response,USER_KEY));
+        chatRVAdapter.notifyDataSetChanged();
 
+        String url="";
+        String BASE_URL="";
+
+        Retrofit retrofit =new Retrofit.Builder()
+                .baseUrl(BASE_URL)
+                .addCallAdapterFactory(GsonConverterFactory.create())
+                .build();
+
+        RetrofitAPI retrofitAPI=retrofit.create(RetrofitAPI.class);
+        Call<MessageModal> call=retrofitAPI.getMessage(url);
+        call.enqueue(new Callback<MessageModal>() {
+            @Override
+            public void onResponse(Call<MessageModal> call, Response<MessageModal> response) {
+                if(response.isSuccessful()){
+                    MessageModal modal=response.body();
+                    chatsModalArrayList.add(new ChatsModal(modal.getResponse(),BOT_KEY));
+                    chatRVAdapter.notifyDataSetChanged();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MessageModal> call, Throwable t) {
+                chatsModalArrayList.add(new ChatsModal("Please revert your question",BOT_KEY));
+                chatRVAdapter.notifyDataSetChanged();
+            }
+        });
+    }
 
 }
