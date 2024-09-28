@@ -57,19 +57,19 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
-//                addResponse(userMsgEdt.getText().toString());
+                addResponse(userMsgEdt.getText().toString());
                 userMsgEdt.setText("");
 
             }
         });
     }
-//    private void addResponse(String response){
-//        chatsModalArrayList.add(new ChatsModal(response,USER_KEY));
-//        chatRVAdapter.notifyDataSetChanged();
-//
-//        String url="";
-//        String BASE_URL="";
-//
+    private void addResponse(String response){
+        chatsModalArrayList.add(new ChatsModal(USER_KEY,response));
+        chatRVAdapter.notifyDataSetChanged();
+
+        String url="";
+        String BASE_URL="";
+
 //        Retrofit retrofit =new Retrofit.Builder()
 //                .baseUrl(BASE_URL)
 //                .addCallAdapterFactory(GsonConverterFactory.create())
@@ -93,6 +93,6 @@ public class MainActivity extends AppCompatActivity {
 //                chatRVAdapter.notifyDataSetChanged();
 //            }
 //        });
-//    }
+    }
 
 }

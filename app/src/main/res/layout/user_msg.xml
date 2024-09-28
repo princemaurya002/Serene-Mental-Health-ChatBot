@@ -10,30 +10,37 @@
     app:cardBackgroundColor="@color/user_back_color"
     app:cardCornerRadius="8dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <!--text view for displaying user message-->
-        <TextView
-            android:id="@+id/idTVUser"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="5dp"
-            android:padding="3dp"
-            android:gravity="center"
-            android:text="User message"
-            android:textColor="@color/white" />
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!--we are displaying user icon-->
-        <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_margin="10dp"
-            android:src="@drawable/user" />
+            <!--text view for displaying user message-->
+            <TextView
+                android:id="@+id/idTVUser"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="5dp"
+                android:gravity="center"
+                android:padding="3dp"
+                android:text="User message"
+                android:textColor="@color/white" />
 
-    </LinearLayout>
+            <!--we are displaying user icon-->
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_margin="10dp"
+                android:src="@drawable/user" />
+
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>

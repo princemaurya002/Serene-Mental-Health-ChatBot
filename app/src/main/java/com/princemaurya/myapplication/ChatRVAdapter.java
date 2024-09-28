@@ -33,8 +33,10 @@ public class ChatRVAdapter extends RecyclerView.Adapter {
             case 1:
                 view=LayoutInflater.from(parent.getContext()).inflate(R.layout.bot_msg,parent,false);
                 return new BotViewHolder(view);
+            default:
+                throw new IllegalStateException("Unexpected value: " + viewType);  // To avoid returning null
+
         }
-        return null;
     }
 
     @Override
@@ -59,7 +61,7 @@ public class ChatRVAdapter extends RecyclerView.Adapter {
             case "bot":
                 return 1;
             default:
-                return -1;
+                return 0;
         }
     }
 
