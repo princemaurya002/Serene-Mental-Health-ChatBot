@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         Retrofit retrofit =new Retrofit.Builder()
                 .baseUrl(BASE_URL)
-                .addCallAdapterFactory(GsonConverterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         RetrofitAPI retrofitAPI=retrofit.create(RetrofitAPI.class);
