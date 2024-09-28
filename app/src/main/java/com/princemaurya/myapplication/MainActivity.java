@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Please enter your message", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                addResponse(userMsgEdt.getText().toString());
+//                addResponse(userMsgEdt.getText().toString());
                 userMsgEdt.setText("");
 
             }
