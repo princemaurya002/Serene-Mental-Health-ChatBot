@@ -1,6 +1,11 @@
 package com.princemaurya.myapplication;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
+
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
@@ -12,7 +17,7 @@ public class WebSocketClient extends WebSocketListener {
 
     public WebSocketClient() {
         OkHttpClient client = new OkHttpClient();
-        Request request = new Request.Builder().url("ws://192.168.1.100:5000").build();  // Replace with your server IP
+        Request request = new Request.Builder().url("ws://10.0.2.2:5001").build();  // Replace with your server IP
         webSocket = client.newWebSocket(request, this);
     }
 
@@ -23,13 +28,16 @@ public class WebSocketClient extends WebSocketListener {
     }
 
     public void sendMessage(String message) {
-        webSocket.send(message);  // Send message to the server
+        webSocket.send(message);
+//        Toast.makeText(this, ""+message+" Sent ", Toast.LENGTH_SHORT).show();// Send message to the server
+        Log.d("message", "Sent "+ message);
     }
 
     @Override
     public void onOpen(WebSocket webSocket, okhttp3.Response response) {
         super.onOpen(webSocket, response);
         System.out.println("Connection opened");
+
     }
 
     @Override
@@ -40,7 +48,9 @@ public class WebSocketClient extends WebSocketListener {
 
     @Override
     public void onFailure(WebSocket webSocket, Throwable t, okhttp3.Response response) {
+        Log.e("Error","${t.localizedMessage}");
         t.printStackTrace();
     }
 }
+
 
