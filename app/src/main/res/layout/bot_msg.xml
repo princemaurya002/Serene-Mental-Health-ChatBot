@@ -41,7 +41,7 @@ android:layout_margin="5dp">
                 displaying message of bot-->
             <TextView
                 android:id="@+id/idTVBot"
-                android:layout_width="match_parent"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="5dp"
