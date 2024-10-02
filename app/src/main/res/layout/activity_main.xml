@@ -8,12 +8,33 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/black"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Getting Started with Serene"
+            android:textColor="@color/white"
+            android:id="@+id/welcometxt"
+            android:textSize="30dp" />
+    </FrameLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/idRVChats"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/idRLMsg"
-        tools:listitem="@layout/bot_msg" />
+        tools:listitem="@layout/bot_msg"
+        android:layout_below="@id/frameLayout"
+        />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
