@@ -5,16 +5,15 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/back_color"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
-
+        android:id="@+id/idRVChats"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/idRVChats"
         android:layout_above="@id/idRLMsg"
-        />
+        tools:listitem="@layout/bot_msg" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,12 +24,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/idEdtMessage"
-            android:textColorHint="@color/white"
+            android:textColorHint="@color/black"
             android:hint="Enter Message"
             android:layout_toLeftOf="@id/idFABSend"
             android:layout_margin="3dp"
             android:layout_centerInParent="true"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:singleLine="true"
             />
         <com.google.android.material.floatingactionbutton.FloatingActionButton
